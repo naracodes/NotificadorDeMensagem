@@ -8,19 +8,25 @@ public class Notificador {
         int i = 0;
         int quantidadePessoas = 1;
 
+        System.out.println("Digite o numero de pessoas que irá receber a notificação: ");
+
         while(quantidadePessoas != 0){
-            System.out.println();
-            System.out.println("Digite o numero de pessoas que irá receber a notificação: ");
             quantidadePessoas = scanner.nextInt();
             scanner.nextLine();
 
-            System.out.println("Digite a mensagem");
-            String mensagem = scanner.nextLine();
+            String[] nome = new String[quantidadePessoas];
 
             System.out.println("Digite os nomes: ");
             while (i < quantidadePessoas) {
-                String nome = scanner.nextLine();
-                mapNotificacao.put(nome, new String(mensagem));
+                nome[i] = scanner.nextLine();
+                i++;
+            }
+            System.out.println("Digite a mensagem");
+            String mensagem = scanner.nextLine();
+
+            i=0;
+            while (i < quantidadePessoas) {
+                mapNotificacao.put(nome[i], new String(mensagem));
                 i++;
             }
 
@@ -37,6 +43,9 @@ public class Notificador {
                 System.out.println(key + " received a mensagem -> " + value);
             }
             mapNotificacao.clear();
+            System.out.println();
+            System.out.println("Digite o numero de pessoas que irá receber a notificação: ");
+            quantidadePessoas = scanner.nextInt();
         }
     }
 }
